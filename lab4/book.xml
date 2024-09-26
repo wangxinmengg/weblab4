@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book id="1">
+        <title>Java编程思想</title>
+        <author>布鲁斯·艾克尔</author>
+        <price>78.00</price>
+    </book>
+    <book id="2">
+        <title>Effective Java</title>
+        <author>约书亚·布洛克</author>
+        <price>50.00</price>
+    </book>
+    <!-- 更多书籍可以在这里添加 -->
+</books>

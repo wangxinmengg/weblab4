@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XML Lab</title>
+</head>
+
+<body>
+    <h1>Book List</h1>
+    <div id="books"></div>
+
+    <script>
+        // 使用Fetch API获取XML数据
+        fetch('book.xml')
+            .then(response => response.text())
+            .then(str => {
+                // 解析XML字符串
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(str, "text/xml");
+
+                // 获取书籍数据
+                const books = xmlDoc.getElementsByTagName('book');
+                let htmlContent = '';
+
+                for (let book of books) {
+                    const title = book.getElementsByTagName('title')[0].textContent;
+                    const author = book.getElementsByTagName('author')[0].textContent;
+                    const price = book.getElementsByTagName('price')[0].textContent;
+                    htmlContent += `<p>Title: ${title}, Author:${author}, Price: ${price}</p>`;
+                }
+
+                // 在HTML页面中显示书籍信息
+                document.getElementById('books').innerHTML = htmlContent;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+
+</html>
